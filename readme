@@ -1,0 +1,56 @@
+Pokédex Frontend
+
+Este proyecto es una aplicación web desarrollada con React, Vite y Bootstrap que permite visualizar una lista de Pokémon, filtrarlos por nombre y consultar su información detallada en un modal.
+
+La aplicación consume datos de la PokeAPI o de un backend personalizado en Express.
+
+Cómo ejecutar el proyecto
+
+1. Clona el repositorio
+
+git clone https://github.com/tu-usuario/poke-frontend.git
+cd poke-frontend
+
+2. Instala las dependencias
+
+npm install
+
+3. Asegúrate de que el backend esté corriendo con:
+
+node index.js
+
+4. Ejecuta la aplicación
+
+npm run dev
+
+5. Abre en tu navegador
+
+http://localhost:5173
+
+Estructura del Proyecto
+
+poke-frontend/
+├── src/
+│   ├── componentes/
+│   │   └── PokemonTable.jsx
+│   ├── services/
+│   │   └── pokeService.js
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── App.css
+├── public/
+│   └── vite.svg
+├── package.json
+├── vite.config.js
+└── README.txt
+
+Cómo se estructura el código
+
+- PokemonTable.jsx: componente principal que renderiza la tabla, el modal y el toast.
+- pokeService.js: servicio de consulta a la API.
+- App.jsx: componente contenedor que muestra la Pokédex.
+- main.jsx: punto de entrada de React con estilos globales.
+
+Autor
+
+Killerkraptor

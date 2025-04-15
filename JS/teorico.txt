@@ -1,0 +1,80 @@
+
+1. ¿Qué tipo de metodologías conoces?
+Tradiconales y agiles
+
+2. ¿Cuál es la diferencia entre una metodología tradicional y una ágil?
+- La tradicional es lineal y secuencial. MIentras que la agil permite cambios durante el desarrolo.
+
+3. ¿Cuáles son los eventos, roles y etapas de scrum?
+Roles:
+- Product Owner
+- Scrum Master
+- Development Team
+
+Eventos:
+- Sprint Planning
+- Daily Scrum (standup)
+- Sprint Review
+- Sprint Retrospective
+
+Etapas:
+1. Backlog del producto
+2. Backlog del sprint
+3. Desarrollo del sprint
+4. Incremento entregable
+
+4. ¿Qué patrones de software conoces?
+
+- Creacionales, estructurales y de comportamiento
+
+5. ¿Qué patrones de diseño de interfaces conoces?
+
+- Card-based UI
+- Grid layout
+- Mobile-first
+- Progressive Disclosure
+- Feedback inmediato (ej: toast)
+- Call to Action claro
+- Consistency en botones y navegación
+
+6. ¿Qué diseños de arquitectura conoces?
+- Monolítica
+- Cliente-servidor
+- Microservicios
+- MVC (Modelo-Vista-Controlador)
+- MVVM
+- RESTful APIs
+- Event-driven Architecture
+
+7. ¿Cuál es la diferencia entre una API RESTful y una API SOAP?
+
+RESTful:
+- Usa HTTP simple
+- Ligera y rápida
+- Usa JSON o XML
+
+SOAP:
+- Usa XML sobre HTTP/SMTP
+- Más pesada y rígida
+- Solo XML
+
+8. ¿Cuál es la diferencia entre Git y GitHub?
+- Git es un sistema de control de versiones local y distribuido.
+- GitHub es la plataforma en la nube basada en Git para colaboración y alojamiento de código.
+
+9. ¿Cuáles son los comandos para subir archivos y bajar cambios de GitHub?
+git add .
+git commit -m "mensaje"
+git push origin main      # subir
+git pull origin main      # bajar
+
+10. ¿Cuáles son los comandos para crear una rama y cambiarse a ella?
+git checkout -b nueva-rama   # crea y cambia
+git checkout nombre-rama     # solo cambia
+
+11. ¿Cómo utilizaste los patrones UI/UX en ese proyecto?
+- Bootstrap para una interfaz coherente y responsiva.
+- Patrón de tabla con grid layout para presentación.
+- Feedback inmediato usando toasts.
+- Uso de modales para mostrar información detallada (progressive disclosure).
+- Jerarquía visual clara con títulos y botones destacados.

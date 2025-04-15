@@ -1,33 +1,48 @@
 import { useEffect, useState } from "react";
-import { getPokemons } from "../services/pokeService";
+import { getPokemons } from "../services/pokeService"; // Servicio que obtiene pokemones del backend
 import { Table, Button, Form, Modal, Toast, ToastContainer } from "react-bootstrap";
 
 const PokemonTable = () => {
+  // Estado que almacena todos los pokemones
   const [pokemons, setPokemons] = useState([]);
+
+  // Estado para manejar el filtro del input de búsqueda
   const [filter, setFilter] = useState("");
+
+  // Pokémon seleccionado para mostrar en el modal
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+
+  // Controla si el modal está abierto o cerrado
   const [showModal, setShowModal] = useState(false);
+
+  // Controla si el toast de notificación se muestra
   const [showToast, setShowToast] = useState(false);
+
+  // Mensaje del toast
   const [toastMsg, setToastMsg] = useState("");
 
+  // Cargar la lista de pokemones cuando el componente se monta
   useEffect(() => {
     getPokemons().then(data => {
       setPokemons(data);
     });
   }, []);
 
+  // Filtra los pokemones por el nombre
   const filteredPokemons = pokemons.filter(poke =>
     poke.name.toLowerCase().includes(filter.toLowerCase())
   );
 
+  // Función para manejar la selección de un Pokémon
   const handleShow = async (pokemon) => {
     try {
+      // Hace fetch a la URL individual del Pokémon para obtener más detalles
       const res = await fetch(pokemon.url);
       const data = await res.json();
-      setSelectedPokemon(data);
-      setShowModal(true);
-      setToastMsg(`Has seleccionado a ${data.name}`);
-      setShowToast(true);
+      setSelectedPokemon(data);       // Guarda el Pokémon seleccionado
+      setShowModal(true);             // Abre el modal
+      setToastMsg(`Has seleccionado a ${data.name}`); // Define mensaje del toast
+      setShowToast(true);             // Muestra el toast
     } catch (error) {
       console.error("Error al cargar los datos del Pokémon", error);
     }
@@ -37,6 +52,7 @@ const PokemonTable = () => {
     <div className="p-4 fade-in">
       <h2 className="text-center fw-bold mb-4">Pokédex</h2>
 
+      {/* Input de búsqueda */}
       <Form.Control
         type="text"
         placeholder="Search with name"
@@ -45,6 +61,7 @@ const PokemonTable = () => {
         onChange={(e) => setFilter(e.target.value)}
       />
 
+      {/* Tabla de Pokémon */}
       <Table striped bordered hover responsive className="shadow-sm text-center align-middle">
         <thead className="table-dark">
           <tr>
@@ -68,6 +85,7 @@ const PokemonTable = () => {
         </tbody>
       </Table>
 
+      {/* Modal con detalles del Pokémon */}
       <Modal show={showModal} onHide={() => setShowModal(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title><strong>Information</strong></Modal.Title>
@@ -83,7 +101,7 @@ const PokemonTable = () => {
               <h5 className="text-capitalize">{selectedPokemon.name}</h5>
 
               <p>
-                <strong>Tips:</strong>{" "}
+                <strong>Types:</strong>{" "}
                 {selectedPokemon.types.map((t) => t.type.name).join(", ")}
               </p>
 
@@ -97,15 +115,14 @@ const PokemonTable = () => {
                   </li>
                 ))}
               </ol>
-              
+
               <p>
-              	<strong> Shiny:</strong>
-              	<img
-              		src ={selectedPokemon.sprites.front_shiny}
-              		alt ={`${selectedPokemon.name} shiny`}
-              	 />
+                <strong>Shiny:</strong><br />
+                <img
+                  src={selectedPokemon.sprites.front_shiny}
+                  alt={`${selectedPokemon.name} shiny`}
+                />
               </p>
-              
             </div>
           ) : (
             <p>Cargando...</p>
@@ -118,6 +135,7 @@ const PokemonTable = () => {
         </Modal.Footer>
       </Modal>
 
+      {/* Toast de notificación */}
       <ToastContainer className="position-fixed bottom-0 end-0 p-3">
         <Toast
           onClose={() => setShowToast(false)}
@@ -134,5 +152,3 @@ const PokemonTable = () => {
 };
 
 export default PokemonTable;
-
-		
